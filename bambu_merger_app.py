@@ -73,17 +73,35 @@ OBJECT_OVERRIDE_KEYS = [
 ]
 
 def find_bambu_studio_path():
-    """Cerca l'eseguibile di Bambu Studio o OrcaSlicer sul sistema"""
-    candidates = [
-        r"C:\Program Files\Bambu Studio\bambu-studio.exe",
-        r"C:\Program Files (x86)\Bambu Studio\bambu-studio.exe",
-        os.path.expandvars(r"%LOCALAPPDATA%\BambuStudio\bambu-studio.exe"),
-        r"C:\Program Files\OrcaSlicer\orca-slicer.exe",
-        r"C:\Program Files (x86)\OrcaSlicer\orca-slicer.exe",
-    ]
-    for path in candidates:
-        if os.path.isfile(path):
-            return path
+    """Cerca l'eseguibile di Bambu Studio o OrcaSlicer sul sistema (Windows / macOS / Linux)"""
+    if sys.platform == 'darwin':
+        mac_apps = [
+            "/Applications/BambuStudio.app",
+            os.path.expanduser("~/Applications/BambuStudio.app"),
+            "/Applications/OrcaSlicer.app",
+            os.path.expanduser("~/Applications/OrcaSlicer.app")
+        ]
+        for app in mac_apps:
+            if os.path.exists(app):
+                return app
+        return "BambuStudio"
+    elif sys.platform.startswith('win'):
+        candidates = [
+            r"C:\Program Files\Bambu Studio\bambu-studio.exe",
+            r"C:\Program Files (x86)\Bambu Studio\bambu-studio.exe",
+            os.path.expandvars(r"%LOCALAPPDATA%\BambuStudio\bambu-studio.exe"),
+            r"C:\Program Files\OrcaSlicer\orca-slicer.exe",
+            r"C:\Program Files (x86)\OrcaSlicer\orca-slicer.exe",
+        ]
+        for path in candidates:
+            if os.path.isfile(path):
+                return path
+    else:
+        for bin_name in ["bambu-studio", "orca-slicer", "BambuStudio"]:
+            import shutil
+            which = shutil.which(bin_name)
+            if which:
+                return which
     return None
 
 def extract_plate_metadata(filepath):
@@ -750,7 +768,12 @@ class BambuPlateMergerApp(ctk.CTk):
 
         if self.var_open_bambu.get() and self.bambu_path:
             try:
-                subprocess.Popen([self.bambu_path, out_path])
+                if sys.platform == 'darwin':
+                    subprocess.Popen(['open', '-a', self.bambu_path, out_path])
+                elif sys.platform.startswith('win'):
+                    subprocess.Popen([self.bambu_path, out_path])
+                else:
+                    subprocess.Popen(['xdg-open', out_path])
             except Exception as e:
                 print(f"Errore apertura Bambu Studio: {e}")
 
