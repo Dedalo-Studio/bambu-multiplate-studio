@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.spec
+
+# Build & Packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environment
+venv/
+env/
+.env
+
+# Test & 3D Model files (large / private)
+*.3mf
+*.gcode
+*.stl
+*.step
+
+# Windows
+*.lnk
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
