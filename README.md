@@ -36,12 +36,16 @@ Il motore di slicing (`libslic3r`) in realtà supporta parametri differenti, a p
 
 ---
 
-### 📦 Download Diretto (Windows)
+### 📦 Download Diretto
 
 Non è necessario installare Python! Puoi scaricare la versione pre-compilata:
 
-* 💾 [**Scarica Eseguibile Diretto (.exe)**](https://github.com/Dedalo-Studio/bambu-multiplate-studio/releases/latest/download/BambuPlateMerger.exe) — *Avvio immediato, file singolo portatile*.
+#### 🪟 Windows
+* 💾 [**Scarica Eseguibile Standalone (.exe)**](https://github.com/Dedalo-Studio/bambu-multiplate-studio/releases/latest/download/BambuPlateMerger.exe) — *Avvio immediato, file singolo portatile*.
 * 📦 [**Scarica Archivio Completo (.zip)**](https://github.com/Dedalo-Studio/bambu-multiplate-studio/releases/latest/download/BambuPlateMerger-v1.0.0-windows.zip) — *Pacchetto zip estraibile*.
+
+#### 🍎 macOS
+* 🍏 [**Scarica Applicazione per macOS (.zip)**](https://github.com/Dedalo-Studio/bambu-multiplate-studio/releases/latest/download/BambuPlateMerger-macOS.zip) — *Contiene `BambuPlateMerger.app` nativa per Mac*.
 
 ---
 
@@ -108,12 +112,16 @@ The underlying slicing engine (`libslic3r`) actually supports mixed settings, pr
 
 ---
 
-### 📦 Direct Downloads (Windows)
+### 📦 Direct Downloads
 
 No Python installation required:
 
+#### 🪟 Windows
 * 💾 [**Download Standalone Executable (.exe)**](https://github.com/Dedalo-Studio/bambu-multiplate-studio/releases/latest/download/BambuPlateMerger.exe) — *Single portable file, runs instantly*.
 * 📦 [**Download Complete Archive (.zip)**](https://github.com/Dedalo-Studio/bambu-multiplate-studio/releases/latest/download/BambuPlateMerger-v1.0.0-windows.zip) — *Extractable zip package*.
+
+#### 🍎 macOS
+* 🍏 [**Download macOS Application (.zip)**](https://github.com/Dedalo-Studio/bambu-multiplate-studio/releases/latest/download/BambuPlateMerger-macOS.zip) — *Contains native `BambuPlateMerger.app` bundle*.
 
 ---
 
