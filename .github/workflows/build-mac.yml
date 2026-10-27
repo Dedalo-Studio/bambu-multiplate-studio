@@ -1,0 +1,21 @@
+name: Build macOS App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          pip install -r requirements.txt pyinstaller
+          python -m PyInstaller --windowed --noconsole --collect-data customtkinter --name "BambuPlateMerger" bambu_merger_app.py
+          cd dist && zip -r ../BambuPlateMerger-macOS.zip BambuPlateMerger.app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BambuPlateMerger-macOS
+          path: BambuPlateMerger-macOS.zip
